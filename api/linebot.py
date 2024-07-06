@@ -3,7 +3,7 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import (MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, CarouselColumn,
                             CarouselTemplate, MessageAction, URIAction, ImageCarouselColumn, ImageCarouselTemplate,
-                            ImageSendMessage)
+                            ImageSendMessage, ButtonsTemplate)
 import os
 
 line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
@@ -56,6 +56,38 @@ def handle_message(event):
 
             )
         line_bot_api.reply_message(event.reply_token, confirm_template)
+
+    if event.message.text == 'button':
+        button_template = TemplateSendMessage(
+
+            alt_text="buttons template",
+
+            template = ButtonsTemplate(
+
+                thumbnail_image_url = "",
+
+                title = "Brown Cafe",
+                text = "Enjoy",
+
+                actions=[
+
+                    MessageAction(
+
+                        label="咖啡有神麼好處",
+                        text="讓人有精神"
+                    ),
+                    URIAction(
+                        label = "伯朗咖啡",
+                        url="https://google.com"
+
+                    )
+
+                ]
+
+            )
+
+
+            )
 
 
 
