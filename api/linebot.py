@@ -54,7 +54,8 @@ def handle_message(event):
 
                 ]
 
-            )
+        )
+
         line_bot_api.reply_message(event.reply_token, confirm_template)
 
     if event.message.text == 'button':
@@ -86,8 +87,8 @@ def handle_message(event):
 
             )
 
-
-            )
+        )
+        line_bot_api.reply_message(event.reply_token, button_template)
 
 
 
