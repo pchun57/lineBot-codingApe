@@ -91,6 +91,69 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, button_template)
 
 
+    if event.message.text == 'carousel':
+        carousel_template = TemplateSendMessage(
+
+            alt_text="carousel template",
+
+            template= CarouselTemplate(
+
+                columns = [
+
+                    #第一個
+                    CarouselColumn(
+
+                        thumbnail_image_url = "",
+
+                        title = "Brown Cafe",
+                        text = "Enjoy",
+                        actions = [
+
+                            MessageAction(
+                                label="咖啡有神麼好處",
+                                text="讓人有精神"
+                            ),
+                            URIAction(
+                                label = "伯朗咖啡",
+                                url="https://google.com"
+
+                            )
+                        ]
+
+                    ),
+
+                    #第二個
+                    CarouselColumn(
+
+                        thumbnail_image_url = "",
+
+                        title = "Brown Cafe",
+                        text = "Enjoy",
+                        actions = [
+
+                            MessageAction(
+                                label="咖啡有神麼好處",
+                                text="讓人有精神"
+                            ),
+                            URIAction(
+                                label = "伯朗咖啡",
+                                url="https://google.com"
+
+                            )
+                        ]
+
+                    )
+
+
+                ]
+
+
+            )
+
+
+        )
+
+
 
 if __name__ == "__main__":
     app.run()
