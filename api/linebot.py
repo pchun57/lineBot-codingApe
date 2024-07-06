@@ -115,7 +115,7 @@ def handle_message(event):
                             ),
                             URIAction(
                                 label = "伯朗咖啡",
-                                url="https://google.com"
+                                uri="https://google.com"
 
                             )
                         ]
@@ -137,7 +137,7 @@ def handle_message(event):
                             ),
                             URIAction(
                                 label = "伯朗咖啡",
-                                url="https://google.com"
+                                uri="https://google.com"
 
                             )
                         ]
@@ -152,6 +152,47 @@ def handle_message(event):
 
 
         )
+        line_bot_api.reply_message(event.reply_token, carousel_template)
+
+    if event.message.text == 'image-carousel':
+        image_carousel_template = TemplateSendMessage(
+
+            alt_text = "image carousel template",
+
+            template = ImageCarouselTemplate(
+
+                columns = [
+
+                    ImageCarouselColumn(
+
+                        image_url = "",
+                        actions = URIAction(
+                            label = "伯朗咖啡",
+                            uri="https://google.com"
+
+                        )
+                    ),
+
+                    ImageCarouselColumn(
+
+                        image_url = "",
+                        actions = URIAction(
+                            label = "伯朗咖啡",
+                            uri="https://google.com"
+
+                        )
+                    )
+
+                ]
+
+
+            )
+
+
+
+        )
+        line_bot_api.reply_message(event.reply_token, image_carousel_template)
+
 
 
 
