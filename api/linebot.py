@@ -32,9 +32,32 @@ def callback():
 
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    # line_bot_api.reply_message(
+    #     event.reply_token,
+    #     TextSendMessage(text=event.message.text))
+
+    if event.message.text == "確認樣板":
+        confirm_template = TemplateSendMessage(
+
+            alt_text = "comfirm template",
+
+            actions = [
+
+                MessageAction(
+                    label = 'yes',
+                    text = 'yes'
+                ),
+                MessageAction(
+                    label = 'no',
+                    text = 'no'
+                )
+
+                ]
+
+            )
+        line_bot_api.reply_message(event.reply_token, confirm_template)
+
+
 
 if __name__ == "__main__":
     app.run()
